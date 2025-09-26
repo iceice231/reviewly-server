@@ -1,4 +1,5 @@
 import {Column, PrimaryGeneratedColumn} from "typeorm";
+import { v4 as uuidv4 } from 'uuid';
 
 /** Базовая сущность. */
 export class BaseEntity {
@@ -7,6 +8,6 @@ export class BaseEntity {
     public id: number;
 
     /** Глобальный уникальный идентификатор. */
-    @Column({type: 'uuid', nullable: false})
+    @Column({type: 'uuid', nullable: false, default: () => uuidv4()})
     public guid: string;
 }

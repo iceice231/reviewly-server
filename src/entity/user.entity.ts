@@ -19,24 +19,28 @@ export class UserEntity extends BaseEntity{
     public patronymic: string;
 
     /**  Псевданим. */
-    @Column({type: 'varchar', length: 25})
+    @Column({type: 'varchar', length: 50})
     public username: string;
 
     /**  Электронная почта. */
-    @Column({type: 'varchar', length: 25})
+    @Column({type: 'varchar', length: 40})
     public email: string;
 
     /**  Пароль. */
     @Column({type: 'text'})
     public password: string;
 
+    /** Количество отзывов. */
+    @Column({name: 'reviews_count', type: 'int4', default: 0})
+    public reviewsCount: number;
+
     /**  Уровень. */
-    @OneToOne(() => UserLevelEntity)
+    @OneToOne(() => UserLevelEntity, {onDelete: 'SET NULL', onUpdate: 'CASCADE'})
     @JoinColumn({name: 'user_level_id'})
     public userLevel: UserLevelEntity
 
     /** Фотография пользователя. */
-    @OneToOne(() => UserFileEntity)
+    @OneToOne(() => UserFileEntity, {onDelete: 'SET NULL', onUpdate: 'CASCADE'})
     @JoinColumn({name: 'user_file_id'})
     public userFile: UserFileEntity
 }

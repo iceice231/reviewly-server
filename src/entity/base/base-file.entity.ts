@@ -12,7 +12,7 @@ export class BaseFileEntity{
     public filename: string;
 
     /** Дата загрузки. */
-    @Column({name: 'uploaded_at', type: 'date'})
+    @Column({name: 'uploaded_at', type: 'date', default: Date.now()})
     public uploadedAt: Date;
 
     /** Файл. */

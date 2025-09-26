@@ -5,6 +5,6 @@ import {BaseCodeNameEntity} from "./base/base-code-name.entity";
 @Entity({name: 'userlevels'})
 export class UserLevelEntity extends BaseCodeNameEntity{
     /** Количество необходимых к проверке ревью */
-   @Column({name: 'required_reviews_count', type: 'int4', nullable: true})
+   @Column({name: 'required_reviews_count', type: 'int4', nullable: true, default: 0})
    public requiredReviewsCount: number;
 }
